@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import './App.css';
 import InputField from './components/InputField';
-import SingleTodo from './components/SingleTodo';
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import TodoList from './components/TodoList';
+import { SxApp, SxHeading } from './components/styles';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
 export interface Todo {
     id: number;
     todo: string;
@@ -87,68 +89,20 @@ const App: React.FC = () => {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <div className="App">
-                <span className="heading">Taskify</span>
+            <Box sx={SxApp}>
+                <Typography sx={SxHeading}>Taskify</Typography>
                 <InputField
                     todo={todo}
                     setTodo={setTodo}
                     handleAdd={handleAdd}
                 />
-                <div className="container">
-                    <Droppable droppableId="TodosList">
-                        {(provided, snapshot) => (
-                            <div
-                                className={`todos ${
-                                    snapshot.isDraggingOver ? 'dragactive' : ''
-                                }`}
-                                ref={provided.innerRef}
-                                {...provided.droppableProps}
-                            >
-                                <span className="todos__heading">
-                                    Active Tasks
-                                </span>
-                                {todos.map((todo, index) => (
-                                    <SingleTodo
-                                        index={index}
-                                        todo={todo}
-                                        key={todo.id}
-                                        todos={todos}
-                                        setTodos={setTodos}
-                                    />
-                                ))}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                    <Droppable droppableId="TodosRemove">
-                        {(provided, snapshot) => (
-                            <div
-                                className={`todos remove ${
-                                    snapshot.isDraggingOver
-                                        ? 'dragcomplete'
-                                        : ''
-                                }`}
-                                ref={provided.innerRef}
-                                {...provided.droppableProps}
-                            >
-                                <span className="todos__heading">
-                                    Completed Tasks
-                                </span>
-                                {completedTodos.map((todo, index) => (
-                                    <SingleTodo
-                                        index={index}
-                                        todo={todo}
-                                        todos={completedTodos}
-                                        key={todo.id}
-                                        setTodos={setCompletedTodos}
-                                    />
-                                ))}
-                                {provided.placeholder}
-                            </div>
-                        )}
-                    </Droppable>
-                </div>
-            </div>
+                <TodoList
+                    todos={todos}
+                    setTodos={setTodos}
+                    completedTodos={completedTodos}
+                    setCompletedTodos={setCompletedTodos}
+                />
+            </Box>
         </DragDropContext>
     );
 };

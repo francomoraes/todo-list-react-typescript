@@ -1,10 +1,16 @@
+import { Box } from '@mui/system';
 import React, { useEffect, useRef, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
-import { MdDone } from 'react-icons/md';
 import { Todo } from '../App';
-
-import './styles.css';
+import {
+    CustomFormSingle,
+    CustomInputSingle,
+    StrikeThrough,
+    SxIcon
+} from './styles';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import DeleteIcon from '@mui/icons-material/Delete';
+import DoneIcon from '@mui/icons-material/Done';
 
 type Props = {
     index: number;
@@ -51,51 +57,44 @@ const SingleTodo = ({ index, todo, todos, setTodos }: Props) => {
     return (
         <Draggable draggableId={todo.id.toString()} index={index}>
             {(provided, snapshot) => (
-                <form
-                    className={`todos__single ${
-                        snapshot.isDragging ? 'drag' : ''
-                    }`}
+                <CustomFormSingle
                     onSubmit={(event) => handleEdit(event, todo.id)}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
                     {edit ? (
-                        <input
+                        <CustomInputSingle
                             ref={inputRef}
                             value={editTodo}
                             onChange={(event) =>
                                 setEditTodo(event.target.value)
                             }
-                            className="todos__single__text"
+                            onBlur={() => setEdit(!edit)}
                         />
                     ) : todo.isDone ? (
-                        <s className="todos__single__text">{todo.todo}</s>
+                        <StrikeThrough sx={{ textDecoration: 'line-through' }}>
+                            {todo.todo}
+                        </StrikeThrough>
                     ) : (
-                        <span className="todos__single__text">{todo.todo}</span>
+                        <StrikeThrough>{todo.todo}</StrikeThrough>
                     )}
 
-                    <div>
-                        <span
-                            className="icon"
+                    <Box>
+                        <BorderColorIcon
+                            sx={SxIcon}
                             onClick={() => !edit && setEdit(!edit)}
-                        >
-                            <AiFillEdit />
-                        </span>
-                        <span
-                            className="icon"
+                        />
+                        <DeleteIcon
+                            sx={SxIcon}
                             onClick={() => handleDelete(todo.id)}
-                        >
-                            <AiFillDelete />
-                        </span>
-                        <span
-                            className="icon"
+                        />
+                        <DoneIcon
+                            sx={SxIcon}
                             onClick={() => handleDone(todo.id)}
-                        >
-                            <MdDone />
-                        </span>
-                    </div>
-                </form>
+                        />
+                    </Box>
+                </CustomFormSingle>
             )}
         </Draggable>
     );

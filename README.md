@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+## Readme (en)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### App to learn and practice the basics of TypeScript with React
 
-## Available Scripts
+## <i>To Do List</i>
 
-In the project directory, you can run:
+[Link to the App](https://francomoraes.github.io/todo-list-react-typescript/)
 
-### `npm start`
+### Current Implementations:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   Add tasks;
+-   Remove tasks;
+-   Edit tasks;
+-   Strike tasks (line through);
+-   Drag and drop;
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Future Implementations:
 
-### `npm test`
+-   Focus on the add task input on Enter if there are no other inputs selected;
+-   Toggle color theme;
+-   Keep the tasks to localstorage;
+-   Move to completed on strike;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Implementation
 
-### `npm run build`
+The project from the course [React & TypeScript - Course for Beginners](https://www.youtube.com/watch?v=FJDVKeh7RJI) created by [Roadside Coder](https://www.youtube.com/c/RoadsideCoder) starts the application from scratch, and installing all the libraries needed to get to this final implementation.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Code structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The code consists of 5 main files, beeing: App, InputField, TodoList, SingleTodo.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The App hubs the rendering of the title, input field and the TodoList components, as well as the functions to drang and add the items to the list.
 
-### `npm run eject`
+The InputField is a simple component to get the input data from the user.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The TodoList renders the two lists (active and completed tasks) and holds some of the logic of the drag and drop functionality.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The SingleTodo component represents each task card created by the user. The file has the functions to handle edit, delete and set to done, as well as render the component with the provided task.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Apart from the course, this project was implemented with MUI Material lib.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Tecnologies
 
-## Learn More
+To work out this project some research was done on:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   CSS
+-   Material MUI
+-   Typescript
+    -   Interfaces
+    -   Types
+    -   React.Dispatch
+-   Styled components
+-   React hooks (useState, useEffect, useRef)
+-   React-beautiful-dnd (drag and drop dependency)
+-   Husky and lint-staged for pre-commit hooks
+-   Prettier
+    <hr>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Special thanks to [Piyush Agarwal](https://github.com/piyush-eon) and [freeCodeCamp.org](https://github.com/freeCodeCamp) for providing this straightforward and usefull course.
+
+## Autor
+
+Franco Moraes <br>
+[![GitHub](https://i.stack.imgur.com/tskMh.png)]() [GitHub](https://github.com/francomoraes) <br>
+[![LinkedIn](https://i.stack.imgur.com/gVE0j.png)]() [LinkedIn](https://www.linkedin.com/in/francomoraes/)

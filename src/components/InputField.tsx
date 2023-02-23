@@ -1,5 +1,6 @@
+import { Button } from '@mui/material';
 import React, { useRef } from 'react';
-import './styles.css';
+import { SxButton, CustomForm, CustomInput } from './styles';
 
 interface Props {
     todo: string;
@@ -11,26 +12,24 @@ const InputField = ({ todo, setTodo, handleAdd }: Props) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     return (
-        <form
-            className="input"
+        <CustomForm
             onSubmit={(event) => {
                 handleAdd(event);
                 inputRef.current?.blur();
             }}
         >
-            <input
+            <CustomInput
                 id="add_task"
                 ref={inputRef}
                 type="input"
                 placeholder="Enter a task"
-                className="input__box"
                 value={todo}
                 onChange={(event) => setTodo(event.target.value)}
             />
-            <button className="input__submit" type="submit">
+            <Button sx={SxButton} type="submit">
                 Add
-            </button>
-        </form>
+            </Button>
+        </CustomForm>
     );
 };
 
