@@ -58,7 +58,7 @@ To work out this project some research was done on:
 
 Special thanks to [Piyush Agarwal](https://github.com/piyush-eon) and [freeCodeCamp.org](https://github.com/freeCodeCamp) for providing this straightforward and usefull course.
 
-## Autor
+## Author
 
 Franco Moraes <br>
 [![GitHub](https://i.stack.imgur.com/tskMh.png)]() [GitHub](https://github.com/francomoraes) <br>
